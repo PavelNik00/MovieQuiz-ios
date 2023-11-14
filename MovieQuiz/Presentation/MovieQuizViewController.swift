@@ -12,6 +12,10 @@ final class MovieQuizViewController: UIViewController {
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
     
+    private let questionsAmount: Int = 15
+    private var questionFactory: QuestionFactory = QuestionFactory()
+    private var currentQuestion: QuizQuestion?
+    
     private let alert = UIAlertController(
         title: "Этот раунд окончен!",
         message: "Ваш результат ???",
@@ -20,7 +24,7 @@ final class MovieQuizViewController: UIViewController {
     private let questions: [QuizQuestion] = [
         QuizQuestion(
             image: "The Godfather",
-            text: "Рейтинг этого фильма больше чем 6?",
+            text: "Рейтинг этого фильма больше чем 6у?",
             correctAnswer: true),
         QuizQuestion(
             image: "The Dark Knight",
