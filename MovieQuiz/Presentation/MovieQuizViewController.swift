@@ -12,7 +12,7 @@ final class MovieQuizViewController: UIViewController {
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
     
-    private let questionsCount = 15
+    private let questionsCount = 10
     
     private var currentQuestion: QuizQuestion?
     private var questionFactory: QuestionFactory?

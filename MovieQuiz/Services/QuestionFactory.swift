@@ -76,26 +76,6 @@ private let questions: [QuizQuestion] = [
     QuizQuestion(
         image: "Vivarium",
         text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: false),
-    QuizQuestion(
-        image: "Blade runner 2049",
-        text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: true),
-    QuizQuestion(
-        image: "Ghost in the shell",
-        text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: true),
-    QuizQuestion(
-        image: "Solaris",
-        text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: true),
-    QuizQuestion(
-        image: "The Great Beauty",
-        text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: true),
-    QuizQuestion(
-        image: "Metropolis",
-        text: "Рейтинг этого фильма больше чем 6?",
-        correctAnswer: true)
+        correctAnswer: false)
 ]
 
