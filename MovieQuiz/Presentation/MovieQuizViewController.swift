@@ -61,17 +61,15 @@ final class MovieQuizViewController: UIViewController {
         self.yesButton.isEnabled = false
         self.noButton.isEnabled = false
         
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 8
+        imageView.layer.cornerRadius = 20
+        
         if isCorrect {
-            imageView.layer.masksToBounds = true
-            imageView.layer.borderWidth = 8
             imageView.layer.borderColor = UIColor.ypGreen.cgColor
-            imageView.layer.cornerRadius = 20
             correctAnswers += 1
         } else {
-            imageView.layer.masksToBounds = true
-            imageView.layer.borderWidth = 8
             imageView.layer.borderColor = UIColor.ypRed.cgColor
-            imageView.layer.cornerRadius = 20
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
@@ -120,9 +118,8 @@ final class MovieQuizViewController: UIViewController {
         
         let accuracy = "\(String(format: "%.2f", statisticService.totalAccuracy))%"
         let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
-        let currentGameResultLine = "Ваш результат: \(correctAnswers)\\\(questionsCount)"
-        let bestGameInfoLine = "Рекорд: \(bestGame.correct)\\\(bestGame.total)"
-        + "(\(bestGame.date.dateTimeString))"
+        let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(questionsCount)"
+        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total)" + "(\(bestGame.date.dateTimeString))"
         let averageAccuracyLine = "Средняя точность: \(accuracy)"
         
         let resultMessage = [
