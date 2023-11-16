@@ -26,6 +26,8 @@
 		E96278C92B02F86900F2FAD1 /* StatisticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96278C82B02F86900F2FAD1 /* StatisticService.swift */; };
 		E99C356F2B050840005B42DA /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99C356D2B050840005B42DA /* YS Display-Bold.ttf */; };
 		E99C35702B050840005B42DA /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E99C356E2B050840005B42DA /* YS Display-Medium.ttf */; };
+		E9008F0E2AC72B6100D29783 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9008F0C2AC72B6100D29783 /* YS Display-Bold.ttf */; };
+		E9008F0F2AC72B6100D29783 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9008F0D2AC72B6100D29783 /* YS Display-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		E96278C82B02F86900F2FAD1 /* StatisticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticService.swift; sourceTree = "<group>"; };
 		E99C356D2B050840005B42DA /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		E99C356E2B050840005B42DA /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
+		E9008F0C2AC72B6100D29783 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
+		E9008F0D2AC72B6100D29783 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				E99C356C2B050840005B42DA /* MovieQuizFonts */,
+				E9008F0B2AC72B6100D29783 /* MovieQuizFonts */,
 				AD1ABABC2831907F00B3E448 /* LaunchScreen.storyboard */,
 				AD1ABABA2831907F00B3E448 /* Assets.xcassets */,
 				AD1ABABF2831907F00B3E448 /* Info.plist */,
@@ -150,6 +155,11 @@
 			children = (
 				E99C356D2B050840005B42DA /* YS Display-Bold.ttf */,
 				E99C356E2B050840005B42DA /* YS Display-Medium.ttf */,
+		E9008F0B2AC72B6100D29783 /* MovieQuizFonts */ = {
+			isa = PBXGroup;
+			children = (
+				E9008F0C2AC72B6100D29783 /* YS Display-Bold.ttf */,
+				E9008F0D2AC72B6100D29783 /* YS Display-Medium.ttf */,
 			);
 			path = MovieQuizFonts;
 			sourceTree = "<group>";
@@ -218,6 +228,8 @@
 				AD1ABAB92831907B00B3E448 /* Main.storyboard in Resources */,
 				E99C356F2B050840005B42DA /* YS Display-Bold.ttf in Resources */,
 				E99C35702B050840005B42DA /* YS Display-Medium.ttf in Resources */,
+				E9008F0E2AC72B6100D29783 /* YS Display-Bold.ttf in Resources */,
+				E9008F0F2AC72B6100D29783 /* YS Display-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N29P9VDV4Y;
+				DEVELOPMENT_TEAM = 6VCXFM3Z9Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieQuiz/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -403,7 +415,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavelmdesign.practicum.MovieQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -417,7 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N29P9VDV4Y;
+				DEVELOPMENT_TEAM = 6VCXFM3Z9Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieQuiz/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -433,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavelmdesign.practicum.MovieQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

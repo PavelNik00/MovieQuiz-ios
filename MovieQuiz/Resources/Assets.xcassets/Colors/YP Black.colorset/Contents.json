@@ -8,6 +8,9 @@
           "blue" : "0.133",
           "green" : "0.106",
           "red" : "0.102"
+          "blue" : "0.000",
+          "green" : "0.000",
+          "red" : "0.000"
         }
       },
       "idiom" : "universal"
