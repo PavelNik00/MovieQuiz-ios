@@ -6,7 +6,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        print("Проверка на коммит. Создание новой ветки Спринт_5")
+        print("Проверка на коммит. Создание новой ветки Спринт_5 доп изменения")
         return true
     }
 
