@@ -5,10 +5,11 @@
 //  Created by Pavel Nikipelov on 02.11.2023.
 //
 
-import Foundation
+import UIKit
 
 struct QuizQuestion {
-    let image: String
+    let imageURL: URL
+    let image: UIImage?
     let text: String
     let correctAnswer: Bool
 }
