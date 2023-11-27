@@ -11,9 +11,6 @@ final class MovieQuizViewController: UIViewController {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-//    private var currentQuestionIndex = 0
-//    private let questionsCount: Int = 10
-    
     private var correctAnswers: Int = 0
     
     private var currentQuestion: QuizQuestion?
@@ -38,6 +35,8 @@ final class MovieQuizViewController: UIViewController {
         super.viewDidLoad()
         
         imageView.layer.cornerRadius = 20
+        
+        presenter.viewController = self
         
         questionFactory = QuestionFactoryImpl(moviesLoader: MoviesLoader(), delegate: self)
         alertPresenter = AlertPresenterImpl(viewController: self)
@@ -86,7 +85,7 @@ final class MovieQuizViewController: UIViewController {
     private func show(quiz result: QuizResultsViewModel) {
     }
     
-    private func showAnswerResult(isCorrect: Bool){
+    func showAnswerResult(isCorrect: Bool){
         self.yesButton.isEnabled = false
         self.noButton.isEnabled = false
         
@@ -161,15 +160,19 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
-        let givenAnswer = true
-        
-        showAnswerResult(isCorrect: givenAnswer == currentQuestion?.correctAnswer)
+//        let givenAnswer = true
+//
+//        showAnswerResult(isCorrect: givenAnswer == currentQuestion?.correctAnswer)
+        presenter.currentQuestion = currentQuestion
+        presenter.yesButtonClicked()
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
-        let givenAnswer = false
-        
-        showAnswerResult(isCorrect: givenAnswer == currentQuestion?.correctAnswer)
+        presenter.currentQuestion = currentQuestion
+        presenter.noButtonClicked()
+//        let givenAnswer = false
+//        
+//        showAnswerResult(isCorrect: givenAnswer == currentQuestion?.correctAnswer)
     }
 }
 
