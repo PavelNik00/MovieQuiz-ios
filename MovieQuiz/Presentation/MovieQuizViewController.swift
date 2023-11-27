@@ -13,7 +13,7 @@ final class MovieQuizViewController: UIViewController {
     
     private var correctAnswers: Int = 0
     
-    private var currentQuestion: QuizQuestion?
+//    private var currentQuestion: QuizQuestion?
     private var questionFactory: QuestionFactory?
     private var alertPresenter: AlertPresenter?
     private var statisticService: StatisticService?
@@ -75,7 +75,7 @@ final class MovieQuizViewController: UIViewController {
         alertPresenter?.show(alertModel: model)
     }
     
-    private func show(quiz step: QuizStepViewModel) {
+    func show(quiz step: QuizStepViewModel) {
         imageView.layer.borderColor = UIColor.clear.cgColor
         textLabel.text = step.question
         imageView.image = step.image
@@ -102,7 +102,10 @@ final class MovieQuizViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
-            self.showNextQuestionOrResult()
+            self.presenter.correctAnswers = self.correctAnswers
+            self.presenter.questionFactory = self.questionFactory
+            self.presenter.showNextQuestionOrResults()
+//            self.showNextQuestionOrResult()
             
             self.yesButton.isEnabled = true
             self.noButton.isEnabled = true
@@ -110,52 +113,52 @@ final class MovieQuizViewController: UIViewController {
         }
     }
     
-    private func showNextQuestionOrResult() {
-        if presenter.isLastQuestion() {
-            showFinalResults()
-            
-        } else {
-            presenter.switchToNextQuestion()
-            questionFactory?.requestNextQuestion()
-        }
-    }
+//    private func showNextQuestionOrResult() {
+//        if presenter.isLastQuestion() {
+//            showFinalResults()
+//            
+//        } else {
+//            presenter.switchToNextQuestion()
+//            questionFactory?.requestNextQuestion()
+//        }
+//    }
     
-    private func showFinalResults() {
-        statisticService?.store(correct: correctAnswers, total: presenter.questionsCount)
-        
-        let alertModel = AlertModel(
-            title: "Игра окончена!",
-            message: makeResultMessage(),
-            buttonText: "OK",
-            buttonAction: { [weak self] in
-                self?.presenter.currentQuestionIndex = 0
-                self?.correctAnswers = 0
-                self?.questionFactory?.requestNextQuestion()
-            })
-
-        alertPresenter?.show(alertModel: alertModel)
-        alert.view.accessibilityIdentifier = "Game results"
-    }
+//    private func showFinalResults() {
+//        statisticService?.store(correct: correctAnswers, total: presenter.questionsCount)
+//        
+//        let alertModel = AlertModel(
+//            title: "Игра окончена!",
+//            message: makeResultMessage(),
+//            buttonText: "OK",
+//            buttonAction: { [weak self] in
+//                self?.presenter.currentQuestionIndex = 0
+//                self?.correctAnswers = 0
+//                self?.questionFactory?.requestNextQuestion()
+//            })
+//
+//        alertPresenter?.show(alertModel: alertModel)
+//        alert.view.accessibilityIdentifier = "Game results"
+//    }
     
-    private func makeResultMessage() -> String {
-        
-        guard let statisticService = statisticService, let bestGame = statisticService.bestGame else {
-            assertionFailure("error message")
-            return ""
-        }
-        
-        let accuracy = "\(String(format: "%.2f", statisticService.totalAccuracy))%"
-        let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
-        let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(presenter.questionsCount)"
-        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total)" + "(\(bestGame.date.dateTimeString))"
-        let averageAccuracyLine = "Средняя точность: \(accuracy)"
-        
-        let resultMessage = [
-        currentGameResultLine, totalPlaysCountLine, bestGameInfoLine, averageAccuracyLine
-        ].joined(separator: "\n")
-                              
-        return resultMessage
-    }
+//    func makeResultMessage() -> String {
+//        
+//        guard let statisticService = statisticService, let bestGame = statisticService.bestGame else {
+//            assertionFailure("error message")
+//            return ""
+//        }
+//        
+//        let accuracy = "\(String(format: "%.2f", statisticService.totalAccuracy))%"
+//        let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
+//        let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(presenter.questionsCount)"
+//        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total)" + "(\(bestGame.date.dateTimeString))"
+//        let averageAccuracyLine = "Средняя точность: \(accuracy)"
+//        
+//        let resultMessage = [
+//        currentGameResultLine, totalPlaysCountLine, bestGameInfoLine, averageAccuracyLine
+//        ].joined(separator: "\n")
+//                              
+//        return resultMessage
+//    }
     
     // MARK: - Actions
     
@@ -163,12 +166,12 @@ final class MovieQuizViewController: UIViewController {
 //        let givenAnswer = true
 //
 //        showAnswerResult(isCorrect: givenAnswer == currentQuestion?.correctAnswer)
-        presenter.currentQuestion = currentQuestion
+//        presenter.currentQuestion = currentQuestion
         presenter.yesButtonClicked()
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
-        presenter.currentQuestion = currentQuestion
+//        presenter.currentQuestion = currentQuestion
         presenter.noButtonClicked()
 //        let givenAnswer = false
 //        
@@ -177,6 +180,7 @@ final class MovieQuizViewController: UIViewController {
 }
 
 // MARK: QuestionFactoryDelegate
+
 
 extension MovieQuizViewController: QuestionFactoryDelegate {
     
@@ -191,15 +195,16 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
     
     
     func didReceiveNextQuestion(_ question: QuizQuestion?) {
-        guard let question = question else {
-            return
+        presenter.didReceiveNextQuestion(question)
+        //        guard let question = question else {
+//            return
         }
         
-        self.currentQuestion = question
-        let viewModel = presenter.convert(model: question)
-        DispatchQueue.main.async { [weak self] in
-            self?.show(quiz: viewModel)
-        }
-    }
+//        self.currentQuestion = question
+//        let viewModel = presenter.convert(model: question)
+//        DispatchQueue.main.async { [weak self] in
+//            self?.show(quiz: viewModel)
+        
+    
 }
 
