@@ -10,7 +10,7 @@ import Foundation
 protocol StatisticService {
     var totalAccuracy: Double { get }
     var gamesCount: Int { get }
-    var bestGame: BestGame? { get }
+    var bestGame: GameRecord { get }
     
     func store(correct: Int, total: Int)
 }
@@ -72,15 +72,15 @@ extension StatisticServiceImpl: StatisticService {
         }
     }
     
-    var bestGame: BestGame? {
+    var bestGame: GameRecord {
         get {
             guard
                 let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
-                let bestGame = try? decoder.decode(BestGame.self, from: data) else {
+                let record = try? decoder.decode(GameRecord.self, from: data) else {
                 return .init(correct: 0, total: 0, date: Date())
             }
             
-            return bestGame
+            return record
         }
         set {
             guard let data = try? encoder.encode(newValue) else {
@@ -98,13 +98,10 @@ extension StatisticServiceImpl: StatisticService {
         self.gamesCount += 1
         
         let date = dateProvider()
-        let currentBestGame = BestGame(correct: correct, total: total, date: date)
         
-        if let previousBestGame = bestGame {
-            if currentBestGame > previousBestGame {
-                bestGame = currentBestGame
-            }
-        } else {
+        let currentBestGame = GameRecord(correct: correct, total: total, date: date)
+        
+        if currentBestGame.isBetterThan(bestGame) {
             bestGame = currentBestGame
         }
     }
