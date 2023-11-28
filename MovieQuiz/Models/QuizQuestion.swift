@@ -8,7 +8,7 @@
 import UIKit
 
 struct QuizQuestion {
-    let imageURL: URL
+    let imageURL: URL?
     let image: UIImage?
     let text: String
     let correctAnswer: Bool

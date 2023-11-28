@@ -1,6 +1,6 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
@@ -14,11 +14,6 @@ final class MovieQuizViewController: UIViewController {
     private var presenter: MovieQuizPresenter!
     
     private var alertPresenter: AlertPresenter?
-    
-    private let alert = UIAlertController(
-        title: "Этот раунд окончен!",
-        message: "Ваш результат ???",
-        preferredStyle: .alert)
     
     // MARK: Lifecycle
     
@@ -60,7 +55,8 @@ final class MovieQuizViewController: UIViewController {
             title: result.title,
             message: message,
             preferredStyle: .alert)
-        
+        alert.view.accessibilityIdentifier = "Game results"
+
         let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
             guard let self = self else { return }
             
@@ -91,7 +87,7 @@ final class MovieQuizViewController: UIViewController {
         hideLoadingIndicator()
         
         let alert = UIAlertController(
-            title: "Ошибка",
+            title: "Что-то пошло не так(",
             message: message,
             preferredStyle: .alert)
         
