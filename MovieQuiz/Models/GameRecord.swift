@@ -7,14 +7,12 @@
 
 import Foundation
 
-struct BestGame: Codable {
+struct GameRecord: Codable {
     let correct: Int
     let total: Int
     let date: Date
-}
-
-extension BestGame: Comparable {
-   static func < (lhs: BestGame, rhs: BestGame) -> Bool {
-       lhs.correct < rhs.correct
-   }
+    
+    func isBetterThan(_ another: GameRecord) -> Bool {
+        correct > another.correct
+    }
 }
