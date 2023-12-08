@@ -63,19 +63,51 @@ extension QuestionFactoryImpl: QuestionFactory {
                 print("Failed to load image")
             }
             
+            // Создание обоих вопросов
             let rating = Float(movie.rating) ?? 0
-            let ratingForQuestion: Float = [ rating - 1, rating + 1 ].randomElement() ?? 0.0
-            let text = "Рейтинг этого фильма больше чем \(Int(ratingForQuestion))?"
-            let correctAnswer = rating > ratingForQuestion
+            let ratingChange: Float = 0.5 // Величина изменения рейтинга для вопроса
             
-            let question = QuizQuestion(imageURL: movie.imageURL,
+            // Создание вопроса о рейтинге выше
+            let ratingAbove = rating + ratingChange
+            let textAbove = String.localizedStringWithFormat(NSLocalizedString("RATING_QUESTION_ABOVE", comment: ""), ratingAbove)
+            let correctAnswerAbove = Bool.random()
+
+            let questionAbove = QuizQuestion(imageURL: movie.imageURL,
                                         image: UIImage(data: imageData),
-                                        text: text,
-                                        correctAnswer: correctAnswer)
+                                        text: textAbove,
+                                        correctAnswer: correctAnswerAbove)
+            
+            // Создание вопроса о рейтинге ниже
+            let ratingBelow = rating - ratingChange
+            let textBelow = String.localizedStringWithFormat(NSLocalizedString("RATING_QUESTION_BELOW", comment: ""), ratingBelow)
+            let correctAnswerBelow = !correctAnswerAbove
+
+            let questionBelow = QuizQuestion(imageURL: movie.imageURL,
+                                        image: UIImage(data: imageData),
+                                        text: textBelow,
+                                        correctAnswer: correctAnswerBelow)
+            
+//            let ratingForQuestion: Float = rating + ratingChange
+////            let ratingForQuestion: Float = [ rating - 1, rating + 1 ].randomElement() ?? 0.0
+////            let text = "Рейтинг этого фильма больше чем \(Int(ratingForQuestion))?"
+//            let text = String.localizedStringWithFormat(NSLocalizedString("RATING_QUESTION", comment: ""), ratingForQuestion)
+//            let correctAnswer = rating > ratingForQuestion
+            
+//            let question = QuizQuestion(imageURL: movie.imageURL,
+//                                        image: UIImage(data: imageData),
+//                                        text: text,
+//                                        correctAnswer: correctAnswer)
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.didReceiveNextQuestion(question)
+                
+                let questions = [questionAbove, questionBelow]
+                let shuffledQuestions = questions.shuffled()
+                
+                for question in shuffledQuestions {
+                    self.delegate?.didReceiveNextQuestion(question)
+
+                }
             }
         }
     }

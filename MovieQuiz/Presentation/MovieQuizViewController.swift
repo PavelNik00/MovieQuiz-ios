@@ -87,11 +87,11 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         hideLoadingIndicator()
         
         let alert = UIAlertController(
-            title: "Что-то пошло не так(",
+            title: NSLocalizedString("ALERT_MISTAKE_TITLE", comment: ""),
             message: message,
             preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Попробовать ещё раз",
+        let action = UIAlertAction(title: NSLocalizedString("ALERT_MISTAKE_TEXT_TITLE", comment: ""),
                                    style: .default) { [weak self] _ in
             guard let self = self else { return }
             

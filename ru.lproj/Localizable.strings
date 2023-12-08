@@ -1,7 +1,32 @@
-/* 
+/*
   Localizable.strings
   MovieQuiz
 
   Created by Pavel Nikipelov on 07.12.2023.
   
 */
+
+// "Рейтинг этого фильма больше чем ?" = "Рейтинг этого фильма больше чем ?"
+
+"RATING_QUESTION" = "Рейтинг этого фильма больше чем %.1f?";
+
+"ALERT_FINISH_TITLE" = "Этот раунд окончен!";
+
+"ALERT_MISTAKE_TITLE" = "Что-то пошло не так(";
+
+"ALERT_MISTAKE_TEXT_TITLE" = "Попробовать ещё раз";
+
+"ALERT_FINISH_BUTTOM_TEXT" = "Сыграть ещё раз";
+
+"AMOUNT_PLAYED_GAMES" = "Количество сыгранных квизов: %d";
+
+"GAME_RECORD" = "Рекорд: %@ (%@)";
+
+"YOUR_RESULT" = "Ваш результат: %@";
+
+"AVERAGE_ACCURACY" = "Средняя точность: %@";
+
+"RATING_QUESTION_ABOVE" = "Рейтинг этого фильма выше чем %.1f?";
+
+"RATING_QUESTION_BELOW" = "Рейтинг этого фильма ниже чем %.1f?";
+

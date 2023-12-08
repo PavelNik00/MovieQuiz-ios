@@ -114,9 +114,9 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
             "Вы ответили на \(correctAnswers) из 10, попробуйте еще раз!"
             
             let viewModel = QuizResultsViewModel(
-                title: "Этот раунд окончен!",
+                title: NSLocalizedString("ALERT_FINISH_TITLE", comment: ""),
                 text: text,
-                buttonText: "Сыграть ещё раз")
+                buttonText: NSLocalizedString("ALERT_FINISH_BUTTOM_TEXT", comment: ""))
             viewController?.show(quiz: viewModel)
         } else {
             self.switchToNextQuestion()
@@ -131,10 +131,14 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         
         let accuracy = "\(String(format: "%.2f", statisticService.totalAccuracy))%"
         
-        let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
-        let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(self.questionsAmount)"
-        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total)" + "(\(bestGame.date.dateTimeString))"
-        let averageAccuracyLine = "Средняя точность: \(accuracy)"
+        let totalPlaysCountLine = String.localizedStringWithFormat(NSLocalizedString("AMOUNT_PLAYED_GAMES", comment: ""), statisticService.gamesCount)
+//        "Количество сыгранных квизов: \(statisticService.gamesCount)"
+        let currentGameResultLine = String.localizedStringWithFormat(NSLocalizedString("YOUR_RESULT", comment: ""), "\(correctAnswers)/\(self.questionsAmount)")
+//        "Ваш результат: \(correctAnswers)/\(self.questionsAmount)"
+        let bestGameInfoLine = String.localizedStringWithFormat(NSLocalizedString("GAME_RECORD", comment: ""), "\(bestGame.correct)/\(bestGame.total)", bestGame.date.dateTimeString)
+//        "Рекорд: \(bestGame.correct)/\(bestGame.total)" + "(\(bestGame.date.dateTimeString))"
+        let averageAccuracyLine = String.localizedStringWithFormat(NSLocalizedString("AVERAGE_ACCURACY", comment: ""), accuracy)
+//        "Средняя точность: \(accuracy)"
         
         let resultMessage = [
             currentGameResultLine, totalPlaysCountLine, bestGameInfoLine, averageAccuracyLine

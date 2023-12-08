@@ -5,3 +5,27 @@
   Created by Pavel Nikipelov on 07.12.2023.
   
 */
+
+"RATING_QUESTION" = "Is the rating of this movie greater than %.1f?";
+
+"ALERT_FINISH_TITLE" = "This round is over!";
+
+"ALERT_MISTAKE_TITLE" = "Something went wrong(";
+
+"ALERT_MISTAKE_TEXT_TITLE" = "Try again";
+
+"ALERT_FINISH_BUTTOM_TEXT" = "Play again";
+
+"AMOUNT_PLAYED_GAMES" = "Number of quizzes played: %d";
+
+"GAME_RECORD" = "Record: %@ (%@)";
+
+"YOUR_RESULT" = "Your result: %@";
+
+"AVERAGE_ACCURACY" = "Average accuracy: %@";
+
+"RATING_QUESTION_ABOVE" = "Is the rating of this movie greater than %.1f?";
+
+"RATING_QUESTION_BELOW" = "Is the rating of this movie less than %.1f?";
+
+
